@@ -11,7 +11,11 @@ async function fetchPlayer(input) {
     : `/api/player?id=${input}`;
 
   const res = await fetch(url);
-  return await res.json();
+  const data = await res.json();
+
+  console.log("PLAYER API RESPONSE:", data);
+
+  return data;
 }
 
 async function addPlayer(team) {
@@ -21,6 +25,11 @@ async function addPlayer(team) {
   if (!value) return;
 
   const player = await fetchPlayer(value);
+
+  if (!player || player.rel == null) {
+    alert("Failed to load player stats (REL/WAR missing)");
+    return;
+  }
 
   teams[team].push(player);
   render(team);
@@ -41,6 +50,7 @@ function render(team) {
 }
 
 function value(player) {
+  // simple trade value system
   return (player.rel * 100) + (player.war * 50);
 }
 
