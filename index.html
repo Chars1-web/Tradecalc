@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>RKL Trade Calculator</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <h1>RKL Trade Calculator</h1>
+
+  <div class="container">
+
+    <div class="team">
+      <h2>Team A</h2>
+      <input id="teamA_in" placeholder="@username or ID" />
+      <button onclick="addPlayer('A')">Add</button>
+      <div id="listA"></div>
+    </div>
+
+    <div class="team">
+      <h2>Team B</h2>
+      <input id="teamB_in" placeholder="@username or ID" />
+      <button onclick="addPlayer('B')">Add</button>
+      <div id="listB"></div>
+    </div>
+
+  </div>
+
+  <button class="calc" onclick="calcTrade()">Calculate Trade</button>
+
+  <h2 id="result"></h2>
+
+  <script src="app.js"></script>
+</body>
+</html>
